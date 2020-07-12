@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>DANCE: Login</title>
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+  <script src="public/bindings.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css" />
+  <link rel="stylesheet" href="css/login.css">
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+  <script>
+      // Initialize Firebase
+      firebase.initializeApp({
+          apiKey: "AIzaSyBKETMfUqRr80_qumkfCx92wBOEHOd-C78",
+          authDomain: "daince-b612d.firebaseapp.com",
+          databaseURL: "https://daince-b612d.firebaseio.com",
+          projectId: "daince-b612d",
+          storageBucket: "daince-b612d.appspot.com",
+          messagingSenderId: "109949199255",
+          appId: "1:109949199255:web:92a0d12c5014785ea91ad2"
+      });
+  </script>
+  <script>
+    Authentication.self().then(res => (res.code === 200) ? window.location.href = "index.html" : null).catch(console.error);
+  </script>
+</head>
+
+<body >
+  <div class="container card fixed block cursor">
+    <div class="header">
+      <div class="side-left">
+        <img class="logo" src="assets/logo.png" alt="Daince"/>
+        <p>Learn to dance with AI!</p>
+        <button class="block pointer" id="login">Login with Google</button>
+      </div>
+      <div class="side-right">
+        <div class="dancing-person bob-animation">
+        <img id="dancing-person" src="assets/daince-art-2.png" alt="Image of a person dancing happily."></div>
+      </div>
+      <img id="line" src="assets/line.png"></img>
+    </div>
+  </div>
+  <script>
+    $(document).ready(() => {
+      firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
+
+      let login = $("#login");
+      login.on("click", function(event) {
+        login.html(`<div class="lds-dual-ring"></div>`);
+
+        let provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope("profile");
+        provider.addScope("email");
+
+        firebase.auth().signInWithPopup(provider)
+                .then(res => {
+                  // Set user information
+                  localStorage.setItem("name", res.user.displayName);
+                  localStorage.setItem("uid", res.user.uid);
+                  localStorage.setItem("photo", res.user.photoURL);
+                })
+                .then(() => firebase.auth().currentUser.getIdToken())
+                .then(Authentication.session)
+                .then(res => {
+                  if (res.success) window.location.assign("/index.html");
+                  else console.error("failed to login");
+                })
+                .catch(err => {
+                  login.html("Login with Google");
+                  console.log(err);
+                });
+      });
+    })
+  </script>
+</body>
+
+</html>

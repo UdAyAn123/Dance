@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>DANCE: Training</title>
+  <link rel="stylesheet" href="css/video.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- Load TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+  <!-- Load Posenet -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://vjs.zencdn.net/5.6.0/video.js"></script>
+  <link href="https://vjs.zencdn.net/5.6.0/video-js.css" rel="stylesheet" />
+  <script src="https://unpkg.com/videojs-abloop/dist/videojs-abloop.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+  <script src="public/bindings.js"></script>
+  <script src="js/video.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/blocks.css/dist/blocks.min.css" />
+  <script>
+    Authentication.self().then(res => (res.code !== 200) ? window.location.href = "index.html" : null).catch(console
+      .error);
+  </script>
+</head>
+
+<body>
+  <div class="container card fixed block cursor">
+    <h1 id="name" style="text-align: center;"></h1>
+    <div class="text"><text>Your live score is:</text></div>
+    <div class="text" id="score">
+    </div>
+    <br><br>
+
+    <canvas id="video-canvas" width="640" height="360"></canvas>
+    <canvas id="webcam-canvas" width="640" height="480"></canvas>
+
+    <video width="640px" height="360px" id="vid" controls="controls" class="video-js"
+      data-setup='{ "playbackRates": [0.1, 0.25, 0.5, 0.75, 1, 1.5, 2] }'>
+      <source src="testvid.mp4">
+    </video>
+    <div class="all-settings">
+      <div class="settings">
+        <button id="prev" type="button" class="block">Previous Section</button>
+        <button id="next" type="button" class="block">Next Section</button>
+      </div>
+      <button id="rec" type="button" class="block">Record</button>
+    </div>
+    <!-- <p id="progress"></p> -->
+    <!-- <ol id="olFrames"></ol> -->
+
+    <div id="webcam">
+      <video autoplay="true" id="videoElement"></video>
+    </div>
+  </div>
+
+</body>
+
+</html>
