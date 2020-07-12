@@ -6,7 +6,7 @@
 Dance is a beautiful art form and many people want to learn it, as shown by the growing number of dance studios. With our new physically-distanced world, I can no longer take advantage of that. Learning dance moves from choreography videos is a wonderful tool, but videos cannot tell you if you are doing a dance move correctly. I want people to experience the benefits of a real-life coach with the convenience of on-demand video.
 
 ## What it does
-DAINCE uses artificial intelligence to detect people’s dance moves. It evaluates and tracks how a person is dancing compared to how the dance should be performed, so users of DAINCE learn how to dance better and assess their progress in learning dances. 
+DANCE uses artificial intelligence to detect people’s dance moves. It evaluates and tracks how a person is dancing compared to how the dance should be performed, so users of DANCE learn how to dance better and assess their progress in learning dances. 
 
 ## How I built it
 Beginning with our vision for an AI dance tutorial, I designed a wireframe mockup of the flow of our app and functionality of the pose comparison algorithm. On the front end, I used HTML & CSS to style the site and extensive Javascript to import and implement. I used the Posenet library to implement AI-based pose detection. Meanwhile, the backend team worked on retrieving videos and a list of timestamp markers. Tutorial videos loop according to the timestamps and those markers can be skipped, ignored, and replayed. Feedback from a webcam is taken and used to display a live score. The score is calculated by comparing the data from the webcam to the data from the original/professional dance video. 
@@ -16,7 +16,7 @@ Challenge 1 - I faced major hurdles when attempting to implement the PoseNet mod
 
 Challenge 2 - I have encountered various issues that may seem trivial at first glance, but turned out to have consumed large amounts of time and energy. For example, I spent hours attempting to fix a problem caused by a misplaced iteration variable in a for-loop as I initially thought the problem was caused by something else. We also spent a long time figuring out async/await statements for a few functions to solve a problem that could be solved with a simple if-else statement. Through rigorous checking and testing, discussion with team members working on other parts of the app, and lots of googling, I was able to overcome these challenges.
 
-Challenge 3 - Because of our diverse set of skills, it was initially difficult for us to divy up the tasks we needed to accomplish in order to build DAINCE. However, by working together and playing to each others’ strengths, I was able to work on the areas that I was the most well suited for, and thus succeed as a team. 
+Challenge 3 - Because of our diverse set of skills, it was initially difficult for us to divy up the tasks we needed to accomplish in order to build DANCE. However, by working together and playing to each others’ strengths, I was able to work on the areas that I was the most well suited for, and thus succeed as a team. 
 
 ## Accomplishments that I am proud of
 I am exceptionally proud of how our project can better teach people dance and enhance learning from choreography videos/tutorials. 
